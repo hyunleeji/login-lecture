@@ -12,6 +12,7 @@ const home = require("./src/routes/home") //현재폴더(./)에서 /routes/home�
 //앱 세팅
 app.set("views", "./src/views");//화면 뷰를 관리해줄 파일이 저장될 폴더이름을 2번째 파라미터로 연결
 app.set("view engine", "ejs");//view engine을 ejs라는 걸 사용할것 많이 사용하는 뷰 html이랑 비슷하다
+app.use(express.static(`${__dirname}/src/public`)); 
 
 app.use("/", home); //루트(/)라는 경로로 들어오면 home으로 보내준다. //use는 미들웨어를 등록해주는 메소드
 

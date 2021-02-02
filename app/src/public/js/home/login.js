@@ -1,4 +1,5 @@
 "use strict";
+// html과 연결되어 있는 js파일 프론트화면에 보여질 화면이다
 
 const id = document.querySelector("#id"),
     psword = document.querySelector("#psword"),
@@ -20,7 +21,11 @@ function login() { // id,pw에 들어있는 값을 가져와 줘야한다
             "Content-Type": "application/json" //application한 형태로 json에 전달을 한다.
         },
         body: JSON.stringify(req), //stringify(req를 문자열로 바꿔줌)를 사용해서 오브젝트 req 데이터를 json으로 감싸주게 되는것 // body라는 key값으로 req전달해 줄수 있다.
-    });
+    })
+        .then((res) => res.json())
+        .then((res) => {
+
+        });
     // console.log(id.value); // id.value로 접근하면 입력한 해당값을 가져온다
 }
 

@@ -2,6 +2,7 @@
 
 //모듈
 const express = require("express"); //require 명령어로 express라는 모듈을 다운받아준다.
+const bodyParser = require("body-parser");
 const app = express();//app라는 변수에 express를 실행을 시킨다.
 
 const PORT = 3000;
@@ -13,6 +14,9 @@ const home = require("./src/routes/home") //현재폴더(./)에서 /routes/home�
 app.set("views", "./src/views");//화면 뷰를 관리해줄 파일이 저장될 폴더이름을 2번째 파라미터로 연결
 app.set("view engine", "ejs");//view engine을 ejs라는 걸 사용할것 많이 사용하는 뷰 html이랑 비슷하다
 app.use(express.static(`${__dirname}/src/public`)); 
+app.use(bodyParser.json()); 
+//url을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식 되지 않는 문제 해결.
+app.use(bodyParser.urlencoded({ extended: true })); 
 
 app.use("/", home); //루트(/)라는 경로로 들어오면 home으로 보내준다. //use는 미들웨어를 등록해주는 메소드
 

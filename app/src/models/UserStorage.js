@@ -18,9 +18,22 @@ class UserStorage { // class 안에 선언할때는 const같은 선언자가 필
         }, {});
         return newUsers;
     }
+
+    static getUserInfo(id) {
+        const users = this.#users;
+        const idx = users.id.indexOf(id);
+        const usersKeys = Object.keys(users);
+        const userInfo = usersKeys.reduce((newUser, info) => {
+            newUser[info] = users[info][idx];
+            return newUser; 
+        }, {});
+
+        return userInfo;
+    }
 }
 
 module.exports = UserStorage;
 
+//로그인이나 회원가입 기능을 한다. 
 // console.log(UserStorage.users); 이런식으로 내부데이터에 접근하는게 불가해야 하는게 맞다. 그래서
 // 다이렉트로 접근할수 없게 하기 위해 static users을 은닉화 #users = public한 변수에서 private 변수로 만들어 준다

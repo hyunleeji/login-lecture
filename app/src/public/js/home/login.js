@@ -24,8 +24,15 @@ function login() { // id,pw에 들어있는 값을 가져와 줘야한다
     })
         .then((res) => res.json())
         .then((res) => {
-
-        });
+            if(res.success) {
+                location.href = "/";
+            } else {
+                alert(res.msg);
+            }
+        }) // 에러발생시 
+        .catch((err) => {
+            console.error("로그인 중 에러 발생");
+        }
     // console.log(id.value); // id.value로 접근하면 입력한 해당값을 가져온다
 }
 

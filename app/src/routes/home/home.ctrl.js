@@ -23,6 +23,11 @@ const process = {
         const response = user.login();
         return res.json(response);
     },
+    register: (req, res) => {
+        const user = new User(req.body);
+        const response = user.register();
+        return res.json(response);
+},
 };
 
 //hello, login index.js에서 사용할수 있도록 모듈을 바깥으로 빼준다.

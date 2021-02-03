@@ -4,17 +4,21 @@
 const id = document.querySelector("#id"),
     name = document.querySelector("#name"),
     psword = document.querySelector("#psword"),
-    comfirmPsword = document.querySelector("#confirm-psword"),
+    confirmPsword = document.querySelector("#confirm-psword"),
     registerBtn = document.querySelector("#button")
 
 registerBtn.addEventListener("click", register); //registerBtn 클릭되면 로그인 되게
 
 function register() { // id,pw에 들어있는 값을 가져와 줘야한다
+    if (!id.value) return alert("아이디를 입력해주십시오.")// id.value가 비어있을때 수행
+    if (psword.value !== confirmPsword.value) {
+        return alert("비밀번호가 일치하지 않습니다.")
+    }
+    
     const req = {
         id : id.value,
         name : name.value,
         psword : psword.value,
-        comfirmPsword : comfirmPsword.value,
     };
     console.log(req); // 오브젝트 형태는 키와 값의 형태로 잘 주어져 있지만
     // console.log(JSON.stringify(req)); // json은 일반 문자열의 형태로 출력이 된다.

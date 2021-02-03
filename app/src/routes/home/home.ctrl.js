@@ -2,7 +2,7 @@
 
 const User = require("../../models/User");
 
-const output = {
+const output = { // 단순히 화면을 출력하는 것.
     home: (req, res) => { // const hello = function hello
         res.render("home/index");
     },
@@ -10,6 +10,9 @@ const output = {
     login: (req, res) => {
         res.render("home/login");
     },
+    register: (req, res) => {
+        res.render("home/register");
+    }
 };
 
 
